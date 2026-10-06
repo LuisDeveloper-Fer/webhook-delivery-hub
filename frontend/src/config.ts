@@ -1,0 +1,52 @@
+export const config = {
+  name: "Webhook Delivery Hub",
+  tag: "DELIVERY LAB",
+  description: "La entrega puede fallar. El evento permanece.",
+  post: "/api/events",
+  list: "/api/deliveries",
+  sample: {
+    type: "payment.approved",
+    message: "fictional-payment",
+  },
+  columns: ["id", "status", "attempts", "nextAttempt"],
+  concepts: ["Outbox", "HMAC SHA-256", "Backoff + jitter"],
+  scenarios: [],
+  repo: "webhook-delivery-hub",
+  index: 3,
+  secure: false,
+  payment: false,
+  monitor: false,
+  brand: "enlace",
+  label: "NOTIFICACIONES QUE LLEGAN",
+  title: "Cada evento merece",
+  emphasis: "una respuesta.",
+  intro:
+    "Conecta lo que ocurre en tu sistema con quienes necesitan saberlo. Sigue cada entrega, cada intento y cada confirmación.",
+  accent: "#54ccba",
+  soft: "#edf5f2",
+  kind: "webhook",
+  form: "Publica un evento",
+  button: "Enviar notificación",
+  steps: [
+    "Publica el evento",
+    "Intentamos la entrega",
+    "Verifica la confirmación",
+  ],
+  features: [
+    [
+      "01",
+      "Guardado desde el inicio",
+      "El evento y su entrega se registran juntos.",
+    ],
+    [
+      "02",
+      "Otra oportunidad",
+      "Las entregas temporariamente fallidas vuelven a intentarse.",
+    ],
+    [
+      "03",
+      "Origen verificable",
+      "El receptor comprueba la firma de cada notificación.",
+    ],
+  ],
+};
