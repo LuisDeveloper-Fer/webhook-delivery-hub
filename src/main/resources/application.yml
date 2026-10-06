@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: webhook-delivery-hub
+  datasource:
+    url: ${DB_URL:jdbc:h2:mem:lab;MODE=PostgreSQL;DB_CLOSE_DELAY=-1}
+    username: ${DB_USER:sa}
+    password: ${DB_PASSWORD:}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+server:
+  shutdown: graceful
