@@ -74,8 +74,8 @@ La llamada HTTP ocurre fuera de la transacción. Si el proceso muere después de
 
 ```bash
 curl -i -X POST http://localhost:8080/api/events \
-+  -H 'Content-Type: application/json' \
-+  --data '{"type":"payment.approved","message":"fictional-payment"}'
+  -H 'Content-Type: application/json' \
+  --data '{"type":"payment.approved","message":"fictional-payment"}'
 ```
 
 Ejemplo de respuesta, campos relevantes:
