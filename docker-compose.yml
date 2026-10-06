@@ -1,0 +1,38 @@
+name: webhook-delivery-hub
+services:
+  api:
+    build: .
+    ports: ["127.0.0.1:${API_PORT:-8080}:8080"]
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/lab
+      DB_USER: lab
+      DB_PASSWORD: local-db-only
+      RECEIVER_URL: http://receiver:9092/events
+      WEBHOOK_SECRET: local-demo-key-change-me
+    depends_on:
+      db:
+        condition: service_healthy
+      receiver:
+        condition: service_started
+  frontend:
+    build: ./frontend
+    ports: ["127.0.0.1:${UI_PORT:-4200}:8080"]
+    depends_on: [api]
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: lab
+      POSTGRES_USER: lab
+      POSTGRES_PASSWORD: local-db-only
+    volumes: ["database:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lab -d lab"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  receiver:
+    build: ./receiver
+    environment:
+      WEBHOOK_SECRET: local-demo-key-change-me
+volumes:
+  database:
