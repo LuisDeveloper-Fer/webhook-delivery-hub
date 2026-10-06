@@ -20,6 +20,12 @@ Proyecto independiente del [Backend Systems Lab de Luis](https://github.com/Luis
 
 **Experimento principal:** Publica un evento normal. Después usa message=simulate-error o simulate-rate-limit. Inspecciona el historial hasta FAILED y ejecuta un replay manual.
 
+## Vista previa
+
+![Enlace · notificaciones — interfaz Angular](docs/preview.png)
+
+Interfaz con formularios de operación, estado consultable y detalle técnico desplegable. La imagen muestra la portada; para ejecutar el flujo completo sigue las instrucciones de abajo.
+
 ## Ejecutar
 
 Requisitos: **JDK 21**, Maven 3.9+, Node 22.12+ para Angular y Docker Compose para el stack completo. [Compatibilidad de Spring Boot](https://docs.spring.io/spring-boot/system-requirements.html) · [Compatibilidad de Angular](https://angular.dev/reference/versions).
